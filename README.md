@@ -71,4 +71,4 @@ This application acts as a middleware between your client applications and exter
 ##  Environment Variables
 
 I have already created .env files for POSTGRESQL DB Connection
-For Local start just we need to add node modules for that just do npi 
+For Local start just we need to add node modules for that just do npm i
