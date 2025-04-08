@@ -70,8 +70,5 @@ This application acts as a middleware between your client applications and exter
 
 ##  Environment Variables
 
-Create a `.env` file in the root directory with the following values:
-
-```env
-DATABASE_URL=postgresql://username:password@localhost:5432/rate_limiter
-SESSION_SECRET=your_random_secret_key_here
+I have already created .env files for POSTGRESQL DB Connection
+For Local start just we need to add node modules for that just do npi 
