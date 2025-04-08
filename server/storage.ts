@@ -20,14 +20,16 @@ import connectPg from 'connect-pg-simple';
 import session from 'express-session';
 import pg from 'pg';
 
+import { POSTGRESQL_DB } from '.env';
+
 // Create PostgreSQL connection pool
 const pool = new pg.Pool({
-  connectionString: 'postgresql://anupam_owner:npg_QIupmAj8R6tX@ep-twilight-boat-a5xlp3cw-pooler.us-east-2.aws.neon.tech/anupam?sslmode=require',
+  connectionString: POSTGRESQL_DB,
 });
 
 pool.connect()
-  .then(() => console.log("✅ Connected to PostgreSQL!"))
-  .catch(err => console.error("❌ Failed to connect to PostgreSQL:", err));
+  .then(() => console.log(" Connected to PostgreSQL!"))
+  .catch(err => console.error(" Failed to connect to PostgreSQL:", err));
 
 
 

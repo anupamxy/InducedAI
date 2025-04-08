@@ -1,7 +1,7 @@
 import pg from 'pg';
-
+import POSTGRESQL_DB from '.env'
 const pool = new pg.Pool({
-  connectionString: 'postgresql://anupam_owner:npg_QIupmAj8R6tX@ep-twilight-boat-a5xlp3cw-pooler.us-east-2.aws.neon.tech/anupam?sslmode=require',
+  connectionString: POSTGRESQL_DB,
   ssl: {
     rejectUnauthorized: false
   }
@@ -10,9 +10,9 @@ const pool = new pg.Pool({
 async function testConnection() {
   try {
     const res = await pool.query('SELECT NOW()');
-    console.log('✅ Connected to Neon DB:', res.rows[0]);
+    console.log(' Connected to Neon DB:', res.rows[0]);
   } catch (err) {
-    console.error('❌ Failed to connect to Neon DB:', err);
+    console.error('Failed to connect to Neon DB:', err);
   } finally {
     await pool.end();
   }
