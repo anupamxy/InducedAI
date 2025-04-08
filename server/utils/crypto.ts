@@ -1,7 +1,7 @@
 import crypto from 'crypto';
 import { promisify } from 'util';
 
-// Promisify crypto methods
+
 const pbkdf2 = promisify(crypto.pbkdf2);
 const randomBytes = promisify(crypto.randomBytes);
 
