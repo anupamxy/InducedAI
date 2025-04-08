@@ -1,0 +1,84 @@
+# Rate Limiting Proxy API - Take Home Assignment
+
+## Overview
+
+Design and implement a proxy API service that handles rate limiting for third-party APIs. The service will act as an intermediary layer between clients and their target APIs, managing rate limits transparently.
+
+## Technical Stack
+
+- TypeScript
+- Express.js
+- Database of your choice (if needed)
+
+## Core Requirements
+
+### 1. API Key Management
+
+- Implement an authentication system that issues API keys to users
+- API keys must be required for all operations except initial registration
+- Implement secure storage and validation of API keys
+
+### 2. Application Registration
+
+- Users must be able to register external APIs ("apps") they want to proxy
+- An app is a service you want to use through the API (for eg. OpenAI or Anthropic APIs)
+- Registration endpoint must accept:
+    - Base URL of the target API
+    - Rate limiting configuration:
+        - Strategy (implementation of your choice)
+        - Request count
+        - Time window
+        - Additional parameters based on chosen strategy
+- System must return a unique app ID for each registered API
+
+### 3. Proxy Functionality
+
+- Implement endpoint: `baseurl/apis/<app_id>/*`
+- All requests to this endpoint should be forwarded to the corresponding registered API
+- Maintain original request integrity (headers, body, method)
+- Preserve response integrity back to the client
+
+### 4. Rate Limit Handling
+
+- Track request counts for each registered API
+- Implement at least one rate limit strategy
+- Queue requests automatically when approaching rate limits
+- Handle queued requests with minimal latency once rate limit window refreshes
+- Provide status feedback for queued requests
+
+## Expected Deliverables
+
+1. **Source Code**
+    - Well-organized repository
+    - Clear directory structure
+    - Comprehensive README with:
+        - Setup instructions
+        - API endpoints description
+        - Rate limiting strategy explanation
+        - Example requests and usage
+
+## Evaluation Criteria
+
+1. **Code Quality**
+    - Clean, maintainable code
+    - Proper error handling
+    - Effective logging
+    - Appropriate use of design patterns
+2. **System Design**
+    - Scalable architecture
+    - Efficient rate limit implementation
+    - Proper separation of concerns
+    - Database design (if applicable)
+3. **Performance**
+    - Response time overhead
+    - Resource usage
+    - Queue management efficiency
+
+## Bonus Points
+
+- Implementing multiple rate limiting strategies
+- Adding metrics and monitoring
+- Supporting rate limit configuration updates
+- Adding request analytics
+- Implementing request prioritization
+- Postman collection
